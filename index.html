@@ -367,6 +367,51 @@
     .positioning em { color: var(--accent-deep); font-style: italic; }
 
     /* ============================================================
+       ABOUT ME — portrait + text
+       ============================================================ */
+    .about {
+      padding: clamp(3.75rem, 7vw, 5.75rem) 0;
+      border-top: 1px solid var(--hairline);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    @media (max-width: 780px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .about-portrait {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--accent-soft), var(--yellow-softer));
+      box-shadow: var(--shadow-md);
+      max-width: 360px;
+    }
+    .about-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .about-content h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      margin-top: 1rem;
+    }
+    .about-content p {
+      margin-top: 1.1rem;
+      font-size: 1rem;
+      color: var(--ink-700);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+    .about-content p:first-of-type { margin-top: 1.5rem; }
+    .about-content em { color: var(--accent-deep); font-style: italic; }
+
+    /* ============================================================
        WHAT I FOCUS ON
        ============================================================ */
     .focus {
@@ -825,7 +870,7 @@
         <span>Rhahavy Bala</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
         <a href="#focus">Focus</a>
         <a href="#projects">Projects</a>
         <a href="#toolkit">Toolkit</a>
@@ -843,10 +888,10 @@
           <span class="idx num">00</span><span class="bar"></span>Data Analyst Portfolio
         </span>
         <h1 class="fade-in d1">
-          Business &amp; Data Analyst <span class="pipe">|</span> Building Interactive Dashboards for <em class="underline">Data-Driven Decision Making</em>
+          Business &amp; Data Analyst <span class="pipe">|</span> Building Interactive Dashboards for <em class="underline">Real-World Decision Making</em>
         </h1>
         <p class="hero-sub fade-in d2">
-          I build dashboards and data tools that turn complex information into clear, usable insights. My work helps teams see what matters, ask better questions, and make decisions with confidence.
+          I build dashboards that turn messy, real-world data into clear insights people can actually use. Most of the work is about making information easier to act on — not just easier to look at.
         </p>
         <p class="hero-credibility fade-in d2">
           <strong>Project Coordinator at LEARNstyle</strong> in education technology, with a background in <strong>Honours Political Science at McMaster University</strong>.
@@ -871,25 +916,23 @@
       </div>
     </section>
 
-    <!-- ============ APPROACH ============ -->
-    <section class="positioning" id="approach">
+    <!-- ============ ABOUT ME ============ -->
+    <section class="about" id="about">
       <div class="container">
-        <div class="positioning-grid">
-          <div>
-            <span class="section-label">
-              <span class="idx num">01</span><span class="bar"></span>Approach
-            </span>
-            <h2 class="section-title" style="margin-top:1.1rem;">
-              Where <em style="font-style:italic;color:var(--accent-deep);">policy</em> meets data.
-            </h2>
+        <div class="about-grid">
+          <div class="about-portrait">
+            <img src="/portrait.png" alt="Rhahavy Bala" loading="eager" decoding="async" />
           </div>
-          <div>
-            <p>
-              I approach data through a real-world lens — combining a background in <em>Political Science</em> with hands-on analytical work.
-            </p>
-            <p>
-              My focus is on understanding systems — housing markets, education outcomes, and customer behavior — and translating complex data into insights that support <em>better decisions</em>.
-            </p>
+          <div class="about-content">
+            <span class="section-label">
+              <span class="idx num">01</span><span class="bar"></span>About
+            </span>
+            <h2>About me.</h2>
+            <p>I'm a Business &amp; Data Analyst focused on building interactive dashboards that turn complex data into clear, usable insights.</p>
+            <p>I enjoy working with messy, real-world datasets and turning them into tools that help people actually understand trends and make decisions.</p>
+            <p>My work combines data analysis with a strong focus on usability — making sure dashboards are not just informative, but genuinely useful.</p>
+            <p>Currently working in project coordination, where I'm building experience in workflows, organization, and stakeholder communication.</p>
+            <p>Outside of work, I spend most of my time with my cat and dog — which is probably the least data-driven part of my life.</p>
           </div>
         </div>
       </div>
@@ -1009,11 +1052,11 @@
             <div class="project-body">
               <h3>GTA Housing Market Analysis</h3>
               <dl class="project-points">
-                <div><dt>Problem</dt><dd>How have prices, supply, and affordability shifted across the GTA over time?</dd></div>
-                <div><dt>Approach</dt><dd>Interactive dashboard with regional filters, KPI tracking, and 26-year trend analysis.</dd></div>
-                <div><dt>Impact</dt><dd>Users can compare municipalities, track affordability pressure, and see how carrying costs moved after the 2022 rate hikes.</dd></div>
+                <div><dt>Problem</dt><dd>How prices, supply, and affordability have actually shifted across the GTA — and where the market turned hardest after 2022.</dd></div>
+                <div><dt>What I did</dt><dd>Built an interactive dashboard pulling 26 years of regional housing data, with filters for municipality, housing type, and timeframe.</dd></div>
+                <div><dt>Why it matters</dt><dd>Lets you compare how different parts of the GTA actually moved — and see how monthly carrying costs shifted when rates jumped.</dd></div>
               </dl>
-              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
+              <p class="bi-bridge">Built using the same principles used in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip">Tableau</span>
                 <span class="chip">SQL</span>
@@ -1041,11 +1084,11 @@
             <div class="project-body">
               <h3>Telecom Customer Churn Dashboard</h3>
               <dl class="project-points">
-                <div><dt>Problem</dt><dd>Which customer segments are most at risk of leaving, and where should retention spend go?</dd></div>
-                <div><dt>Approach</dt><dd>Interactive dashboard segmenting a ~7,000-subscriber base by tenure, contract type, payment method, and service mix.</dd></div>
-                <div><dt>Impact</dt><dd>Highlights the cohorts driving churn and supports stakeholder-friendly decisions on where retention efforts produce the highest return.</dd></div>
+                <div><dt>Problem</dt><dd>A telecom needs to know which customers are most likely to leave — and where retention spend will actually pay back.</dd></div>
+                <div><dt>What I did</dt><dd>Segmented around 7,000 subscribers by tenure, contract type, payment method, and service mix, then surfaced churn rates across each cut.</dd></div>
+                <div><dt>Why it matters</dt><dd>Makes it easy to see where to focus retention effort first, instead of blanket discounting customers who weren't going to leave anyway.</dd></div>
               </dl>
-              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
+              <p class="bi-bridge">Built using the same principles used in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip warm">Power BI</span>
                 <span class="chip warm">SQL</span>
@@ -1073,11 +1116,11 @@
             <div class="project-body">
               <h3>Ontario EQAO Dashboard</h3>
               <dl class="project-points">
-                <div><dt>Problem</dt><dd>How has student performance across Ontario shifted since the pandemic, and which boards are still recovering?</dd></div>
-                <div><dt>Approach</dt><dd>Board-level dashboard benchmarking EQAO outcomes against provincial averages, with grade, subject, and region filters.</dd></div>
-                <div><dt>Impact</dt><dd>Makes the gap between top-performing and lagging boards visible in one view — useful for program, policy, and funding decisions.</dd></div>
+                <div><dt>Problem</dt><dd>Education recovery from the pandemic hasn't been even — but provincial averages hide which boards are actually behind.</dd></div>
+                <div><dt>What I did</dt><dd>Built a board-level dashboard benchmarking EQAO outcomes against the provincial average across grades, subjects, and years from 2019 onward.</dd></div>
+                <div><dt>Why it matters</dt><dd>Makes the gap between top-performing and lagging boards visible in one view — which is the right unit for funding and program decisions.</dd></div>
               </dl>
-              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
+              <p class="bi-bridge">Built using the same principles used in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip">Power BI</span>
                 <span class="chip">Excel</span>
