@@ -42,11 +42,12 @@
       --accent-soft: #EEE9F5;
       --accent-softer: #F8F4FC;
 
-      /* Secondary accent — warm butter yellow */
-      --yellow: #E8C960;
-      --yellow-soft: #FBF4D5;
-      --yellow-softer: #FDF9E8;
-      --yellow-deep: #A3872F;
+      /* Secondary accent — warm butter yellow
+         Bumped saturation so the yellow reads as a real accent, not a whisper. */
+      --yellow: #EDC74A;
+      --yellow-soft: #F5DC7C;   /* visible buttery — chips, focus icon, swash base */
+      --yellow-softer: #FBEEB0; /* pale, for gradient headers */
+      --yellow-deep: #8F7420;   /* text color on yellow backgrounds */
 
       /* Layout */
       --max-w: 1160px;
@@ -233,14 +234,16 @@
       display: inline-block;
       isolation: isolate;
     }
+    /* Highlighter-style swash — full yellow, thick, unmistakable */
     .hero h1 em.underline::before {
       content: '';
       position: absolute;
-      left: -0.08em; right: -0.08em;
-      bottom: 0.08em;
-      height: 0.32em;
-      background: var(--yellow-soft);
-      border-radius: 4px;
+      left: -0.12em; right: -0.12em;
+      bottom: 0.04em;
+      height: 0.42em;
+      background: var(--yellow);
+      opacity: 0.7;
+      border-radius: 6px;
       z-index: -1;
     }
     .hero h1 .pipe {
