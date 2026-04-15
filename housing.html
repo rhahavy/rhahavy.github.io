@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GTA Housing Market Analysis — Rhahavy Bala</title>
+  <meta name="description" content="A long-run analysis of pricing, supply, and affordability across Greater Toronto municipalities." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/case-study.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to portfolio
+      </a>
+      <span class="nav-brand">Rhahavy Bala</span>
+      <a href="mailto:rhahavy.b@gmail.com" class="nav-cta">Get in touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <span class="section-label fade-in">
+          <span class="idx">01</span><span class="bar"></span>Case Study · Real Estate
+        </span>
+        <h1 class="fade-in d1">GTA Housing Market Analysis</h1>
+        <p class="cs-hero-sub fade-in d2">
+          A long-run look at prices, inventory, and affordability across the Greater Toronto Area — built to pinpoint when and where the market turned, and who that turn has helped or hurt.
+        </p>
+        <div class="cs-hero-meta fade-in d2">
+          <span class="chip">Tableau</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Excel</span>
+          <span class="sep">·</span>
+          <span>26 years of data</span>
+          <span class="sep">·</span>
+          <span>Independent analysis</span>
+        </div>
+        <div class="cs-hero-actions fade-in d3">
+          <a class="btn btn-primary" href="https://rhahavy.github.io/gta-housing-dashboard" target="_blank" rel="noreferrer noopener">
+            View the Dashboard
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/rhahavy/gta-housing-dashboard" target="_blank" rel="noreferrer noopener">
+            View Code on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 · BUSINESS PROBLEM ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">01</span><span class="bar"></span>The Question</span>
+          <h2>Where in the GTA has affordability slipped hardest — and what's driving it?</h2>
+        </div>
+        <div class="prose">
+          <p>
+            Toronto's housing market has been one of the most volatile in North America. After a decade of upward pressure, the 2022 rate hikes inverted the dynamics almost overnight. Prices dropped. Monthly payments didn't.
+          </p>
+          <p>
+            Affordability is no longer a single number. Home prices, carrying costs, and local inventory each tell a different part of the story, and the headline figure on a listing site increasingly misses what buyers actually face. The goal of this analysis was to bring those three pressures into one view and ask: <em>where does the real pain sit, and what's causing it?</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 · DATA SOURCES ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">02</span><span class="bar"></span>The Data</span>
+          <h2>Four sources, stitched into one view.</h2>
+        </div>
+        <ul class="data-list">
+          <li><span class="label">TRREB MLS data</span><span>Monthly sale prices, listings, and inventory across Greater Toronto municipalities.</span></li>
+          <li><span class="label">Bank of Canada</span><span>Overnight rate and posted 5-year fixed rate, used to derive monthly carrying cost.</span></li>
+          <li><span class="label">Statistics Canada</span><span>CMA-level population and household income, for affordability ratios.</span></li>
+          <li><span class="label">Timespan</span><span>1998 through the most recent complete reporting year.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 03 · DATA PREPARATION ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">03</span><span class="bar"></span>Preparation</span>
+          <h2>Shaping the raw inputs.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            The bulk of the work was upstream. TRREB publishes its data in monthly files that change format periodically and use shifting municipality names — consolidating them into a single consistent long-form table was the first real lift.
+          </p>
+          <p>
+            From there: normalizing municipality names across years, correcting a handful of columns where sale averages had been reported alongside medians, and filling gaps where a municipality was renamed or re-defined mid-series.
+          </p>
+          <p>
+            Two calculated fields did most of the analytical work downstream: <strong>monthly carrying cost</strong> (price × mortgage rate / amortization schedule) and <strong>affordability ratio</strong> (carrying cost ÷ median household income). Re-expressing everything in those terms is what made regions comparable.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · APPROACH ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">04</span><span class="bar"></span>Approach</span>
+          <h2>Three pressures, compared side by side.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            The analysis was framed around three pressures — <em>price, supply, and cost of carry</em> — and how they move together or apart.
+          </p>
+          <p>
+            Multi-year trend lines were built at the municipality level so regional divergence could be surfaced rather than washed out by a GTA-wide average. Each region was then indexed to its 2005 baseline, which made percentage change comparable across very different price tiers (a 10% shift in Durham doesn't mean the same thing as a 10% shift in central Toronto).
+          </p>
+          <p>
+            Finally, rate-change months were cross-referenced against price reactions to identify lag and sensitivity — which parts of the GTA respond fastest when the cost of money changes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · KEY INSIGHTS ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">05</span><span class="bar"></span>Key Insights</span>
+          <h2>What the data actually said.</h2>
+          <p>Five findings, each with direct implications for buyers, policy, and investment decisions.</p>
+        </div>
+
+        <div class="insights">
+          <div class="insight">
+            <span class="num">01</span>
+            <div>
+              <h3>Prices fell. Monthly payments went up anyway.</h3>
+              <p>Post-2022, the roughly 15% GTA price correction was fully offset by higher mortgage rates. Affordability, measured at the monthly payment level, did not improve — and in many municipalities, it got worse.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">02</span>
+            <div>
+              <h3>Supply constraints are regional, not uniform.</h3>
+              <p>Peel and York saw the tightest inventory across the correction. Halton and Durham moved closer to balanced markets in the same period, creating very different local dynamics under the same headline narrative.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">03</span>
+            <div>
+              <h3>The flight to the 905 has partly reversed.</h3>
+              <p>The suburban premium built up during 2020–2021 has been the first to soften. Outer municipalities are now cooling faster than the core — the opposite of the pandemic-era pattern.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">04</span>
+            <div>
+              <h3>Condos and detached homes have decoupled.</h3>
+              <p>Condos held prices better than detached homes through the downturn, likely reflecting different buyer pools (entry-level vs. family formation) under different cost-of-carry pressure.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">05</span>
+            <div>
+              <h3>Affordability ratios have worsened everywhere — but the gap has narrowed.</h3>
+              <p>Every sub-region is less affordable than it was in 2015. The surprising move is that core and outer municipalities have converged toward each other; the divide is less geographic than it used to be.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · BUSINESS IMPLICATIONS ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">06</span><span class="bar"></span>Implications</span>
+          <h2>What the insights mean in practice.</h2>
+        </div>
+        <div class="callouts">
+          <div class="callout">
+            <p class="label">For buyers</p>
+            <p>Price alone isn't the right signal. Carrying cost is where the decision actually lives, and it's moving on different timelines than list price.</p>
+          </div>
+          <div class="callout warm">
+            <p class="label">For investors</p>
+            <p>The regional divergence creates new entry points in Halton and Durham — but requires watching inventory, not just prices, to time them.</p>
+          </div>
+          <div class="callout">
+            <p class="label">For policy</p>
+            <p>The "flight to 905" story needs updating. Outer markets are cooling faster than the core, which changes who current affordability programs should target.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · DASHBOARD ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="dashboard-cta">
+          <p class="label">The dashboard</p>
+          <h2>Explore 26 years of GTA housing in one interactive view.</h2>
+          <p>Filter by municipality, housing type, and timeframe. Compare prices, inventory, and affordability side by side — and see how they respond to rate changes over time.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://rhahavy.github.io/gta-housing-dashboard" target="_blank" rel="noreferrer noopener">
+              Open Dashboard
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/rhahavy/gta-housing-dashboard" target="_blank" rel="noreferrer noopener">
+              View the Code
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 08 · REFLECTION ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">08</span><span class="bar"></span>Reflection</span>
+          <h2>What worked — and what I'd do differently next time.</h2>
+        </div>
+        <div class="reflection">
+          <p class="label">What worked</p>
+          <p>
+            The most impactful move wasn't new math — it was re-baselining everything to make regions comparable. Deriving carrying cost rather than leaning on list prices is what made the affordability story actually visible. A lot of housing narratives fall apart when you look at the monthly payment; this one held together because the framing accounted for it.
+          </p>
+          <p class="label" style="margin-top:1.5rem;">What I'd improve</p>
+          <p>
+            I'd bring rent data in to complete the own-vs-rent affordability picture, which this dashboard currently leaves on the table. I'd also layer in forecasting on carrying cost under different rate scenarios — the single most common question a buyer asks ("what happens if rates go up one more point?") is the one the current view can't answer.
+          </p>
+        </div>
+
+        <!-- Pager -->
+        <div class="pager">
+          <a class="left" href="/">
+            <span class="dir">← All Work</span>
+            <span class="title">Back to portfolio</span>
+          </a>
+          <a class="right" href="/churn.html">
+            <span class="dir">Next →</span>
+            <span class="title">Telecom Customer Churn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>Built by Rhahavy</footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>

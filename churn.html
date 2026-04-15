@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telecom Customer Churn — Rhahavy Bala</title>
+  <meta name="description" content="Understanding which customers are most at risk of leaving, and where retention spend has the best chance of paying back." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/case-study.css" />
+</head>
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="nav-back">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to portfolio
+      </a>
+      <span class="nav-brand">Rhahavy Bala</span>
+      <a href="mailto:rhahavy.b@gmail.com" class="nav-cta">Get in touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="cs-hero">
+      <div class="container container--narrow">
+        <span class="section-label fade-in">
+          <span class="idx">02</span><span class="bar"></span>Case Study · Customer Analytics
+        </span>
+        <h1 class="fade-in d1">Telecom Customer Churn Dashboard</h1>
+        <p class="cs-hero-sub fade-in d2">
+          Which customers are most at risk of leaving — and where would retention spend actually pay back? An exploration of churn behaviour across contract types, tenure, and service mix.
+        </p>
+        <div class="cs-hero-meta fade-in d2">
+          <span class="chip">Power BI</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Data Analysis</span>
+          <span class="sep">·</span>
+          <span>~7,000 subscribers</span>
+        </div>
+        <div class="cs-hero-actions fade-in d3">
+          <a class="btn btn-primary" href="https://rhahavy.github.io/telco-customer-churn-analysis" target="_blank" rel="noreferrer noopener">
+            View the Dashboard
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+          </a>
+          <a class="btn btn-secondary" href="https://github.com/rhahavy/telco-customer-churn-analysis" target="_blank" rel="noreferrer noopener">
+            View Code on GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 · BUSINESS PROBLEM ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">01</span><span class="bar"></span>The Question</span>
+          <h2>Churn isn't just a revenue problem — it's an acquisition problem.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            Every subscriber who leaves has to be replaced, and for most telecoms the cost of acquiring a new customer is several times the monthly margin of a retained one. That means the real cost of churn is usually disguised inside the sales line, not the revenue line.
+          </p>
+          <p>
+            The question this analysis sets out to answer is straightforward: <em>which customer cohorts are most at risk of leaving, and what behaviours precede it?</em> Once that's clear, retention offers can be pointed where they actually change outcomes — rather than sprayed at customers who were going to stay anyway.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 · APPROACH ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">02</span><span class="bar"></span>Approach</span>
+          <h2>Segment the base. Let the risk concentrations speak.</h2>
+        </div>
+        <div class="prose">
+          <p>
+            The work starts from a standard telecom subscriber dataset — roughly 7,000 customers, 20 attributes, and a churn flag. The analytical move was to segment along four natural lines — <strong>tenure, contract length, payment method, and service mix</strong> — and look at how churn rate concentrates in each.
+          </p>
+          <p>
+            Cross-tabs across those dimensions surfaced where the risk actually lives. Where the data allowed, voluntary and involuntary churn were separated so pricing signals couldn't get confused with service-quality signals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 · KEY INSIGHTS ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">03</span><span class="bar"></span>Key Insights</span>
+          <h2>Four findings that change where retention should focus.</h2>
+        </div>
+
+        <div class="insights">
+          <div class="insight">
+            <span class="num">01</span>
+            <div>
+              <h3>Contract length is the single strongest predictor of churn.</h3>
+              <p>Month-to-month customers churn at roughly 3× the rate of one-year contracts and around 7× the rate of two-year contracts. The contract term is more predictive than any single service or pricing attribute.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">02</span>
+            <div>
+              <h3>First-year customers are the most volatile.</h3>
+              <p>Roughly half of all departures happen in the first twelve months. After month 12, churn rates drop sharply — meaning retention work has the highest leverage early in the relationship.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">03</span>
+            <div>
+              <h3>Fiber optic customers churn more than DSL — despite paying more.</h3>
+              <p>Higher-tier subscribers leaving at higher rates is a service-quality signal, not a pricing signal. The usual retention discount won't fix this; it's telling you the product isn't delivering what the pricing promised.</p>
+            </div>
+          </div>
+          <div class="insight">
+            <span class="num">04</span>
+            <div>
+              <h3>Electronic-check payers churn almost twice as often as auto-pay customers.</h3>
+              <p>The payment method itself isn't causing churn — it's a proxy for commitment. Customers who resist auto-pay are the same ones already half out the door. Moving them to auto-pay correlates with dramatically lower churn.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 · BUSINESS ACTIONS ============ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section-header">
+          <span class="section-label"><span class="idx">04</span><span class="bar"></span>Business Actions</span>
+          <h2>Where the retention budget should go next quarter.</h2>
+        </div>
+        <div class="callouts">
+          <div class="callout">
+            <p class="label">Target early-tenure risk</p>
+            <p>Incentivize contract upgrades in months 3–6, when first-year churn risk is concentrated. A small term extension here is worth more than a large discount later.</p>
+          </div>
+          <div class="callout warm">
+            <p class="label">Investigate fiber service quality</p>
+            <p>The fiber churn signal is not a pricing problem. Before adjusting offers, operations should look at network and support quality — the usual retention lever won't hold here.</p>
+          </div>
+          <div class="callout">
+            <p class="label">Convert e-check to auto-pay</p>
+            <p>A small incentive to switch payment method pays back twice: directly (payment friction drops) and indirectly (the switch itself correlates with much lower churn).</p>
+          </div>
+          <div class="callout warm">
+            <p class="label">Stop discounting the already-loyal</p>
+            <p>Customers on 2-year contracts churn least. The biggest retention offers should not go to them — they should go to the cohorts where the dollar actually changes the outcome.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 · DASHBOARD ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="dashboard-cta">
+          <p class="label">The dashboard</p>
+          <h2>Segment by risk, behaviour, and service mix.</h2>
+          <p>The interactive version lets you filter churn across tenure buckets, contract types, and service combinations — and see where retention spend has the highest expected return.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://rhahavy.github.io/telco-customer-churn-analysis" target="_blank" rel="noreferrer noopener">
+              Open Dashboard
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a class="btn btn-secondary" href="https://github.com/rhahavy/telco-customer-churn-analysis" target="_blank" rel="noreferrer noopener">
+              View the Code
+            </a>
+          </div>
+        </div>
+
+        <!-- Pager -->
+        <div class="pager">
+          <a class="left" href="/housing.html">
+            <span class="dir">← Previous</span>
+            <span class="title">GTA Housing Market Analysis</span>
+          </a>
+          <a class="right" href="/eqao.html">
+            <span class="dir">Next →</span>
+            <span class="title">Ontario EQAO Dashboard</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>Built by Rhahavy</footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>
