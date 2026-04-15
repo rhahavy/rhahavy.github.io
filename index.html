@@ -8,30 +8,46 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts: Fraunces (display serif, variable opsz+wght) + Inter (body sans) -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
   <style>
-    /* ================= DESIGN TOKENS ================= */
+    /* ============================================================
+       DESIGN TOKENS
+       Two accent families: lavender (primary) + warm yellow (secondary).
+       ============================================================ */
     :root {
+      /* Neutrals */
       --bg: #FBFAF6;
       --bg-alt: #F5F3EC;
       --surface: #FFFFFF;
       --border: #E8E4D9;
       --border-strong: #D7D2C3;
       --hairline: #EEEAE0;
+
+      /* Ink scale (body + headings) */
       --ink-900: #0E1A2D;
       --ink-700: #2E3B55;
       --ink-500: #5E6A82;
       --ink-400: #8E96A8;
       --ink-300: #BBC0CD;
+
+      /* Primary accent — muted lavender */
       --accent: #6A5B87;
       --accent-deep: #473A68;
-      --accent-ink: #3B2F5C;
       --accent-soft: #EEE9F5;
       --accent-softer: #F8F4FC;
+
+      /* Secondary accent — warm butter yellow */
+      --yellow: #E8C960;
+      --yellow-soft: #FBF4D5;
+      --yellow-softer: #FDF9E8;
+      --yellow-deep: #A3872F;
+
+      /* Layout */
       --max-w: 1160px;
       --max-w-prose: 680px;
       --radius: 12px;
@@ -40,14 +56,20 @@
       --shadow-sm: 0 1px 2px rgba(14,26,45,.04), 0 2px 10px -4px rgba(14,26,45,.06);
       --shadow-md: 0 10px 32px -12px rgba(14,26,45,.18);
       --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+      /* Fonts */
+      --display: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
-    /* ================= RESET ================= */
+    /* ============================================================
+       RESET + BASE
+       ============================================================ */
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: var(--sans);
       font-size: 16px;
       line-height: 1.6;
       color: var(--ink-700);
@@ -57,19 +79,23 @@
       font-feature-settings: 'ss01', 'cv11';
     }
     h1, h2, h3, h4 {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--display);
       font-weight: 500;
       color: var(--ink-900);
-      line-height: 1.12;
-      letter-spacing: -0.018em;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       margin: 0;
+      /* Fraunces optical sizing: sharper serifs at display sizes */
+      font-variation-settings: "opsz" 60, "SOFT" 20;
     }
     p { margin: 0; }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
     ::selection { background: var(--accent-soft); color: var(--ink-900); }
 
-    /* ================= UTILITIES ================= */
+    /* ============================================================
+       UTILITIES
+       ============================================================ */
     .container {
       width: 100%;
       max-width: var(--max-w);
@@ -88,9 +114,13 @@
       color: var(--accent-deep);
     }
     .section-label .idx { color: var(--ink-400); font-weight: 500; }
-    .section-label .bar { width: 28px; height: 1px; background: var(--accent); display: inline-block; }
+    .section-label .bar {
+      width: 28px; height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
     .section-title {
-      font-size: clamp(1.85rem, 3.4vw, 2.6rem);
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
       margin-top: 1rem;
       max-width: 640px;
     }
@@ -101,7 +131,9 @@
       max-width: var(--max-w-prose);
     }
 
-    /* ================= NAV ================= */
+    /* ============================================================
+       NAV
+       ============================================================ */
     .nav {
       position: sticky; top: 0; z-index: 50;
       background: rgba(251, 250, 246, 0.82);
@@ -117,16 +149,17 @@
     }
     .brand {
       display: flex; align-items: center; gap: 0.7rem;
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: var(--display);
       font-size: 1.1rem; font-weight: 600; color: var(--ink-900);
-      letter-spacing: -0.005em;
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 40;
     }
     .brand-mark {
       width: 34px; height: 34px; border-radius: 50%;
       background: var(--ink-900);
       color: var(--bg);
       display: grid; place-items: center;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 0.76rem; font-weight: 600;
       letter-spacing: 0.04em;
     }
@@ -134,8 +167,19 @@
     .nav-links a {
       font-size: 0.88rem; color: var(--ink-500); font-weight: 500;
       transition: color .2s var(--ease);
+      position: relative;
     }
     .nav-links a:hover { color: var(--ink-900); }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute; left: 0; right: 0; bottom: -4px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s var(--ease);
+    }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 0.4rem;
       padding: 0.55rem 1.15rem; border-radius: 999px;
@@ -148,24 +192,60 @@
       .nav-links a:not(.nav-cta) { display: none; }
     }
 
-    /* ================= HERO ================= */
+    /* ============================================================
+       HERO — stronger visual hierarchy + warm-yellow underline swash
+       ============================================================ */
     .hero {
       padding: clamp(4.5rem, 11vw, 8rem) 0 clamp(3.5rem, 7vw, 5rem);
       position: relative; overflow: hidden;
+    }
+    /* Soft lavender+yellow wash at top to anchor the hero */
+    .hero::before {
+      content: '';
+      position: absolute; pointer-events: none;
+      top: -25%; left: -10%;
+      width: 55%; height: 80%;
+      background: radial-gradient(circle, rgba(106,91,135,.08) 0%, transparent 60%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; pointer-events: none;
+      top: -15%; right: -10%;
+      width: 45%; height: 70%;
+      background: radial-gradient(circle, rgba(232,201,96,.10) 0%, transparent 60%);
     }
     .hero-inner { max-width: 880px; position: relative; }
     .hero h1 {
       font-size: clamp(2.3rem, 5.5vw, 4.1rem);
       margin-top: 1.4rem;
+      font-variation-settings: "opsz" 144, "SOFT" 15;
     }
+    /* Italic accent phrase — dark lavender ink */
     .hero h1 em {
-      font-style: italic; font-weight: 500;
+      font-style: italic;
+      font-weight: 500;
       color: var(--accent-deep);
+    }
+    /* Warm yellow highlighter-style underline behind the key phrase */
+    .hero h1 em.underline {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+    }
+    .hero h1 em.underline::before {
+      content: '';
+      position: absolute;
+      left: -0.08em; right: -0.08em;
+      bottom: 0.08em;
+      height: 0.32em;
+      background: var(--yellow-soft);
+      border-radius: 4px;
+      z-index: -1;
     }
     .hero h1 .pipe {
       color: var(--ink-300);
       font-weight: 300;
-      padding: 0 0.25em;
+      padding: 0 0.3em;
       font-style: normal;
     }
     .hero-sub {
@@ -173,8 +253,9 @@
       font-size: clamp(1.05rem, 1.5vw, 1.2rem);
       color: var(--ink-500);
       max-width: 640px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
+    /* Credibility line — italic blockquote style */
     .hero-credibility {
       margin-top: 1.4rem;
       padding-left: 1rem;
@@ -183,17 +264,18 @@
       font-size: 0.95rem;
       color: var(--ink-700);
       font-style: italic;
-      line-height: 1.55;
+      line-height: 1.6;
     }
     .hero-credibility strong {
       font-weight: 600; font-style: normal;
       color: var(--ink-900);
     }
+    /* Status pill */
     .status-bar {
       margin-top: 2.4rem;
       display: inline-flex; align-items: center; flex-wrap: wrap;
       gap: 1.1rem 1.4rem;
-      padding: 0.7rem 1.1rem 0.7rem 1rem;
+      padding: 0.7rem 1.1rem;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 999px;
@@ -211,30 +293,50 @@
     .status-bar .divider {
       width: 1px; height: 14px; background: var(--hairline);
     }
+    /* Hero CTAs — stronger, more confident */
     .hero-ctas {
-      margin-top: 2.2rem;
-      display: flex; gap: 0.75rem; flex-wrap: wrap;
+      margin-top: 2.4rem;
+      display: flex; gap: 0.85rem; flex-wrap: wrap;
+      align-items: center;
     }
     .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.9rem 1.55rem; border-radius: 999px;
-      font-size: 0.9rem; font-weight: 500; font-family: inherit;
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.95rem 1.7rem; border-radius: 999px;
+      font-size: 0.92rem; font-weight: 500; font-family: inherit;
       cursor: pointer; border: 1px solid transparent;
-      transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), box-shadow .2s var(--ease), color .2s var(--ease);
+      transition: transform .25s var(--ease), background .25s var(--ease),
+                  border-color .25s var(--ease), box-shadow .25s var(--ease), color .25s var(--ease);
     }
     .btn svg { transition: transform .25s var(--ease); }
-    .btn:hover svg { transform: translateX(2px); }
+    .btn:hover svg { transform: translateX(3px); }
     .btn-primary { background: var(--ink-900); color: var(--bg); }
-    .btn-primary:hover { background: var(--accent-deep); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-primary:hover {
+      background: var(--accent-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
     .btn-secondary {
       background: var(--surface); color: var(--ink-900);
       border-color: var(--border);
     }
     .btn-secondary:hover {
-      border-color: var(--accent); color: var(--accent-deep); transform: translateY(-2px);
+      border-color: var(--accent); color: var(--accent-deep);
+      transform: translateY(-2px);
     }
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.88rem; font-weight: 500;
+      color: var(--ink-500);
+      padding: 0.5rem 0.25rem;
+      transition: color .2s var(--ease), gap .2s var(--ease);
+    }
+    .btn-link:hover { color: var(--ink-900); gap: 0.6rem; }
+    .btn-link svg { transition: transform .2s var(--ease); }
+    .btn-link:hover svg { transform: translateX(2px); }
 
-    /* ================= SECTION SHELL ================= */
+    /* ============================================================
+       SECTION SHELL
+       ============================================================ */
     .section {
       padding: clamp(4.5rem, 9vw, 7rem) 0;
       position: relative;
@@ -246,7 +348,9 @@
     }
     .section-header { margin-bottom: clamp(2.5rem, 5vw, 3.75rem); }
 
-    /* ================= POSITIONING ================= */
+    /* ============================================================
+       POSITIONING / APPROACH — editorial 2-col
+       ============================================================ */
     .positioning {
       padding: clamp(3.5rem, 7vw, 5.5rem) 0;
       border-top: 1px solid var(--hairline);
@@ -273,7 +377,69 @@
     .positioning p + p { margin-top: 1.1rem; }
     .positioning em { color: var(--accent-deep); font-style: italic; }
 
-    /* ================= WHAT I DO ================= */
+    /* ============================================================
+       WHAT I FOCUS ON — 3 premium cards with icons
+       ============================================================ */
+    .focus {
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      border-top: 1px solid var(--hairline);
+    }
+    .focus-grid {
+      margin-top: clamp(2rem, 4vw, 3rem);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .focus-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.9rem 2.1rem;
+      transition: transform .3s var(--ease), box-shadow .3s var(--ease),
+                  border-color .3s var(--ease);
+      position: relative;
+    }
+    .focus-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
+    }
+    .focus-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: grid; place-items: center;
+      background: var(--accent-soft);
+      color: var(--accent-deep);
+      margin-bottom: 1.3rem;
+      transition: transform .3s var(--ease);
+    }
+    .focus-card:hover .focus-icon { transform: rotate(-2deg) scale(1.04); }
+    /* Middle card uses warm yellow accent for subtle variation */
+    .focus-card:nth-child(2) .focus-icon {
+      background: var(--yellow-soft);
+      color: var(--yellow-deep);
+    }
+    .focus-card:nth-child(2):hover {
+      border-color: var(--yellow);
+    }
+    .focus-card h3 {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 1.35rem;
+      color: var(--ink-900);
+      line-height: 1.25;
+      font-variation-settings: "opsz" 30;
+    }
+    .focus-card p {
+      margin-top: 0.8rem;
+      color: var(--ink-500);
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       WHAT I DO — 4-up hairline grid (craft detail)
+       ============================================================ */
     .what-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -298,16 +464,16 @@
     }
     .what-index {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 0.7rem; font-weight: 600;
       letter-spacing: 0.22em;
       color: var(--accent);
       margin-bottom: 1.25rem;
     }
     .what-item h3 {
-      font-family: 'Playfair Display', serif;
+      font-family: var(--display);
       font-weight: 500;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       line-height: 1.3;
       color: var(--ink-900);
       letter-spacing: -0.015em;
@@ -319,7 +485,10 @@
       line-height: 1.65;
     }
 
-    /* ================= PROJECTS ================= */
+    /* ============================================================
+       PROJECTS — case-study cards
+       Alternating header tint (lavender / yellow / lavender).
+       ============================================================ */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -331,7 +500,8 @@
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       overflow: hidden;
-      transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+      transition: transform .35s var(--ease), box-shadow .35s var(--ease),
+                  border-color .35s var(--ease);
     }
     .project:hover {
       transform: translateY(-4px);
@@ -344,13 +514,19 @@
       border-bottom: 1px solid var(--hairline);
       background: linear-gradient(180deg, var(--accent-softer) 0%, transparent 100%);
     }
+    /* Middle project header uses warm yellow tint — subtle palette interplay */
+    .project.tone-yellow .project-header {
+      background: linear-gradient(180deg, var(--yellow-softer) 0%, transparent 100%);
+    }
+    .project.tone-yellow:hover { border-color: var(--yellow); }
     .project-cat {
       font-size: 0.68rem; font-weight: 600;
       letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--accent-deep);
     }
+    .project.tone-yellow .project-cat { color: var(--yellow-deep); }
     .project-num {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 0.78rem; font-weight: 500;
       letter-spacing: 0.06em;
       color: var(--ink-400);
@@ -360,24 +536,30 @@
       display: flex; flex-direction: column; gap: 1.1rem; flex: 1;
     }
     .project h3 {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       line-height: 1.25;
       letter-spacing: -0.015em;
+      font-variation-settings: "opsz" 30;
     }
+    /* "The question" — italic editorial pull-quote */
     .project-question {
       display: block;
-      font-family: 'Playfair Display', serif;
+      font-family: var(--display);
       font-style: italic;
-      font-size: 0.95rem;
+      font-size: 0.97rem;
       color: var(--accent-deep);
       line-height: 1.5;
-      padding: 0.7rem 0 0.7rem 0.9rem;
+      padding: 0.75rem 0 0.75rem 1rem;
       border-left: 2px solid var(--accent);
       margin-top: -0.4rem;
     }
+    .project.tone-yellow .project-question {
+      color: var(--yellow-deep);
+      border-left-color: var(--yellow);
+    }
     .project-question::before {
       content: 'The question · ';
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-style: normal;
       font-size: 0.68rem;
       font-weight: 600;
@@ -385,13 +567,24 @@
       text-transform: uppercase;
       color: var(--ink-400);
       display: block;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.35rem;
     }
     .project-desc {
       color: var(--ink-500);
       font-size: 0.95rem;
       line-height: 1.65;
     }
+    .project-impact {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--ink-700);
+      padding: 0.5rem 0;
+    }
+    .project-impact .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .project.tone-yellow .project-impact .dot { background: var(--yellow); }
     .project-tools {
       display: flex; flex-wrap: wrap; gap: 0.4rem;
     }
@@ -400,6 +593,10 @@
       padding: 0.32rem 0.75rem; border-radius: 999px;
       background: var(--accent-soft); color: var(--accent-deep);
       letter-spacing: 0.02em;
+    }
+    .chip.warm {
+      background: var(--yellow-soft);
+      color: var(--yellow-deep);
     }
     .project-actions {
       padding: 1.25rem 1.75rem 1.6rem;
@@ -412,12 +609,11 @@
       border-radius: 999px;
       font-weight: 500; font-family: inherit;
       border: 1px solid transparent;
-      transition: transform .2s var(--ease), background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+      transition: transform .2s var(--ease), background .2s var(--ease),
+                  border-color .2s var(--ease), color .2s var(--ease);
     }
     .btn-sm svg { transition: transform .2s var(--ease); }
-    .btn-sm.primary {
-      background: var(--ink-900); color: var(--bg);
-    }
+    .btn-sm.primary { background: var(--ink-900); color: var(--bg); }
     .btn-sm.primary:hover { background: var(--accent-deep); transform: translateY(-1px); }
     .btn-sm.primary:hover svg { transform: translate(2px, -2px); }
     .btn-sm.ghost {
@@ -427,7 +623,9 @@
     .btn-sm.ghost:hover { border-color: var(--accent); color: var(--accent-deep); transform: translateY(-1px); }
     .btn-sm.ghost:hover svg { transform: translateX(2px); }
 
-    /* ================= TOOLKIT ================= */
+    /* ============================================================
+       TOOLKIT — editorial list-style skill index
+       ============================================================ */
     .toolkit-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -448,24 +646,27 @@
       display: flex; flex-direction: column;
     }
     .toolkit-list li {
-      padding: 0.85rem 0;
+      padding: 0.9rem 0;
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--hairline);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.15rem; font-weight: 500;
+      font-family: var(--display);
+      font-size: 1.2rem; font-weight: 500;
       color: var(--ink-900);
       transition: color .2s var(--ease), padding .2s var(--ease);
+      font-variation-settings: "opsz" 30;
     }
     .toolkit-list li:last-child { border-bottom: 0; }
     .toolkit-list li:hover { color: var(--accent-deep); padding-left: 0.3rem; }
     .toolkit-list li .meta {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--sans);
       font-size: 0.78rem; font-weight: 400;
       color: var(--ink-400);
       letter-spacing: 0.04em;
     }
 
-    /* ================= CTA ================= */
+    /* ============================================================
+       CTA — flat navy, high contrast
+       ============================================================ */
     .cta-wrap { padding: clamp(3rem, 6vw, 5rem) 0 clamp(2rem, 4vw, 3rem); }
     .cta {
       background: var(--ink-900);
@@ -490,6 +691,7 @@
       margin-top: 1rem;
       max-width: 720px;
       font-weight: 500;
+      font-variation-settings: "opsz" 80;
     }
     .cta h2 em {
       font-style: italic;
@@ -534,9 +736,7 @@
       transition: all .2s var(--ease);
       border: 1px solid transparent;
     }
-    .cta-btn.primary {
-      background: var(--bg); color: var(--ink-900) !important;
-    }
+    .cta-btn.primary { background: var(--bg); color: var(--ink-900) !important; }
     .cta-btn.primary:hover { transform: translateY(-2px); background: #FFFFFF; }
     .cta-btn.ghost {
       background: transparent;
@@ -547,22 +747,57 @@
     .cta-btn svg { transition: transform .2s var(--ease); }
     .cta-btn:hover svg { transform: translate(2px, -2px); }
 
-    /* ================= FOOTER ================= */
+    /* ============================================================
+       FOOTER — refined with 3 columns on wide screens
+       ============================================================ */
     footer {
       border-top: 1px solid var(--hairline);
-      padding: 2.5rem 0;
+      padding: 3rem 0 2rem;
       color: var(--ink-400);
       font-size: 0.85rem;
     }
-    .footer-inner {
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
     }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { transition: color .2s var(--ease); }
-    .footer-links a:hover { color: var(--ink-900); }
+    @media (max-width: 720px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    .footer-brand {
+      font-family: var(--display);
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--ink-900);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 40;
+    }
+    .footer-tag {
+      color: var(--ink-500);
+      font-size: 0.88rem;
+      max-width: 320px;
+      line-height: 1.55;
+    }
+    .footer-col .label {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--ink-900);
+      margin-bottom: 0.8rem;
+    }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col a { color: var(--ink-500); transition: color .2s var(--ease); }
+    .footer-col a:hover { color: var(--ink-900); }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--hairline);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.5rem;
+    }
 
-    /* ================= MOTION ================= */
+    /* ============================================================
+       MOTION
+       ============================================================ */
     .fade-in {
       opacity: 0; transform: translateY(14px);
       animation: fadeIn .85s var(--ease) forwards;
@@ -582,7 +817,9 @@
 </head>
 <body>
 
-  <!-- ===================== NAV ===================== -->
+  <!-- ======================================================
+       NAV
+       ====================================================== -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
       <a href="#top" class="brand" aria-label="Rhahavy Bala">
@@ -591,7 +828,7 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#approach">Approach</a>
-        <a href="#what">What I Do</a>
+        <a href="#focus">Focus</a>
         <a href="#projects">Projects</a>
         <a href="#toolkit">Toolkit</a>
         <a href="mailto:rhahavy.b@gmail.com" class="nav-cta">Get in touch</a>
@@ -601,17 +838,19 @@
 
   <main id="top">
 
-    <!-- ===================== HERO ===================== -->
+    <!-- ======================================================
+         HERO
+         ====================================================== -->
     <section class="hero">
       <div class="container hero-inner">
         <span class="section-label fade-in">
           <span class="idx num">00</span><span class="bar"></span>Data Analyst Portfolio
         </span>
         <h1 class="fade-in d1">
-          Data Analyst<span class="pipe">|</span>Turning messy data into <em>clear business decisions</em>.
+          Data Analyst<span class="pipe">|</span>Turning messy data into <em class="underline">clear business decisions</em>.
         </h1>
         <p class="hero-sub fade-in d2">
-          I build dashboards and analysis that uncover trends, risks, and opportunities in real-world data.
+          I build dashboards and analysis that uncover trends, risks, and opportunities in real-world data — then translate them into decisions stakeholders can actually make.
         </p>
         <p class="hero-credibility fade-in d2">
           Currently <strong>Junior Project Coordinator at LEARNstyle</strong> in education technology, with a background in <strong>Honours Political Science at McMaster University</strong>.
@@ -626,12 +865,18 @@
             View selected work
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
-          <a class="btn btn-secondary" href="mailto:rhahavy.b@gmail.com">Get in touch</a>
+          <a class="btn btn-secondary" href="mailto:rhahavy.b@gmail.com">Let's talk</a>
+          <a class="btn-link" href="/Resume_Rhahavy_Bala.pdf" target="_blank" rel="noreferrer noopener">
+            Download resume
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ===================== POSITIONING ===================== -->
+    <!-- ======================================================
+         POSITIONING / APPROACH
+         ====================================================== -->
     <section class="positioning" id="approach">
       <div class="container">
         <div class="positioning-grid">
@@ -655,12 +900,71 @@
       </div>
     </section>
 
-    <!-- ===================== WHAT I DO ===================== -->
+    <!-- ======================================================
+         WHAT I FOCUS ON — 3 flagship focus areas
+         ====================================================== -->
+    <section class="focus" id="focus">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">
+            <span class="idx num">02</span><span class="bar"></span>What I Focus On
+          </span>
+          <h2 class="section-title">Three things I bring to every project.</h2>
+          <p class="section-intro">
+            The overlap of these three is where the work gets useful — designing the view, shaping the story, and landing the recommendation.
+          </p>
+        </div>
+
+        <div class="focus-grid">
+          <!-- 01 Dashboard Design -->
+          <div class="focus-card">
+            <div class="focus-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="8" height="10" rx="1.5"/>
+                <rect x="13" y="3" width="8" height="5" rx="1.5"/>
+                <rect x="13" y="10" width="8" height="11" rx="1.5"/>
+                <rect x="3" y="15" width="8" height="6" rx="1.5"/>
+              </svg>
+            </div>
+            <h3>Dashboard Design</h3>
+            <p>Clean, usable layouts that put the right number in front of the right person — built for decisions, not decoration.</p>
+          </div>
+
+          <!-- 02 Data Storytelling — middle card uses warm yellow accent -->
+          <div class="focus-card">
+            <div class="focus-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h12a3 3 0 013 3v10a3 3 0 01-3 3H4V4z"/>
+                <path d="M8 9h8M8 13h6M8 17h4"/>
+              </svg>
+            </div>
+            <h3>Data Storytelling</h3>
+            <p>Translating raw datasets into a clear narrative — with context, comparisons, and a takeaway stakeholders can act on.</p>
+          </div>
+
+          <!-- 03 Insight Generation -->
+          <div class="focus-card">
+            <div class="focus-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6M10 21h4"/>
+                <path d="M12 3a6 6 0 00-4 10.5c.8.7 1.3 1.6 1.5 2.5h5c.2-.9.7-1.8 1.5-2.5A6 6 0 0012 3z"/>
+              </svg>
+            </div>
+            <h3>Insight Generation</h3>
+            <p>Going beyond charts — surfacing the patterns, trade-offs, and recommendations that move projects forward.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================
+         WHAT I DO — craft detail
+         ====================================================== -->
     <section class="section" id="what">
       <div class="container">
         <div class="section-header">
           <span class="section-label">
-            <span class="idx num">02</span><span class="bar"></span>What I Do
+            <span class="idx num">03</span><span class="bar"></span>What I Do
           </span>
           <h2 class="section-title">The craft behind every dashboard.</h2>
           <p class="section-intro">
@@ -693,12 +997,15 @@
       </div>
     </section>
 
-    <!-- ===================== PROJECTS ===================== -->
+    <!-- ======================================================
+         PROJECTS — case studies
+         Middle project uses .tone-yellow for warm palette variation
+         ====================================================== -->
     <section class="section section--alt" id="projects">
       <div class="container">
         <div class="section-header">
           <span class="section-label">
-            <span class="idx num">03</span><span class="bar"></span>Selected Work
+            <span class="idx num">04</span><span class="bar"></span>Selected Work
           </span>
           <h2 class="section-title">Case studies.</h2>
           <p class="section-intro">
@@ -708,7 +1015,7 @@
 
         <div class="projects-grid">
 
-          <!-- ==== Project 1 ==== -->
+          <!-- ==== Project 1 — GTA Housing ==== -->
           <article class="project">
             <div class="project-header">
               <span class="project-cat">Real Estate</span>
@@ -720,8 +1027,12 @@
                 Where has affordability in the GTA slipped fastest — and what's behind it?
               </span>
               <p class="project-desc">
-                A long-run analysis of prices, inventory, and affordability across Greater Toronto municipalities. Built to pinpoint when and where the market turned — and which regions have diverged most from the provincial trend.
+                Long-run analysis of prices, inventory, and affordability across Greater Toronto municipalities. Built to pinpoint when and where the market turned — and which regions have diverged most from the provincial trend.
               </p>
+              <div class="project-impact">
+                <span class="dot"></span>
+                <span><strong style="color:var(--ink-900);">Impact:</strong> surfaces 26 years of price-vs-payment pressure in one view.</span>
+              </div>
               <div class="project-tools">
                 <span class="chip">Tableau</span>
                 <span class="chip">SQL</span>
@@ -740,8 +1051,8 @@
             </div>
           </article>
 
-          <!-- ==== Project 2 ==== -->
-          <article class="project">
+          <!-- ==== Project 2 — Telecom Churn (yellow-toned) ==== -->
+          <article class="project tone-yellow">
             <div class="project-header">
               <span class="project-cat">Customer Analytics</span>
               <span class="project-num num">02 / 03</span>
@@ -754,10 +1065,14 @@
               <p class="project-desc">
                 Segmented a telecom subscriber base by tenure, service mix, and payment behavior to surface the cohorts most likely to churn — and the levers that would have the highest retention payoff.
               </p>
+              <div class="project-impact">
+                <span class="dot"></span>
+                <span><strong style="color:var(--ink-900);">Impact:</strong> identifies the customer cohorts worth retaining first.</span>
+              </div>
               <div class="project-tools">
-                <span class="chip">Power BI</span>
-                <span class="chip">SQL</span>
-                <span class="chip">Data Analysis</span>
+                <span class="chip warm">Power BI</span>
+                <span class="chip warm">SQL</span>
+                <span class="chip warm">Data Analysis</span>
               </div>
             </div>
             <div class="project-actions">
@@ -772,7 +1087,7 @@
             </div>
           </article>
 
-          <!-- ==== Project 3 ==== -->
+          <!-- ==== Project 3 — Ontario EQAO ==== -->
           <article class="project">
             <div class="project-header">
               <span class="project-cat">Education</span>
@@ -786,6 +1101,10 @@
               <p class="project-desc">
                 Benchmarked board-level EQAO outcomes against the provincial average to surface multi-year trends and the widest post-pandemic gaps — with filters designed for program and policy teams.
               </p>
+              <div class="project-impact">
+                <span class="dot"></span>
+                <span><strong style="color:var(--ink-900);">Impact:</strong> highlights the boards with the largest learning recovery gaps.</span>
+              </div>
               <div class="project-tools">
                 <span class="chip">Power BI</span>
                 <span class="chip">Excel</span>
@@ -808,12 +1127,14 @@
       </div>
     </section>
 
-    <!-- ===================== TOOLKIT ===================== -->
+    <!-- ======================================================
+         TOOLKIT
+         ====================================================== -->
     <section class="section" id="toolkit">
       <div class="container">
         <div class="section-header">
           <span class="section-label">
-            <span class="idx num">04</span><span class="bar"></span>Toolkit
+            <span class="idx num">05</span><span class="bar"></span>Toolkit
           </span>
           <h2 class="section-title">The kit behind the work.</h2>
           <p class="section-intro">
@@ -843,12 +1164,14 @@
       </div>
     </section>
 
-    <!-- ===================== CTA ===================== -->
+    <!-- ======================================================
+         CTA
+         ====================================================== -->
     <section class="cta-wrap" id="contact">
       <div class="container">
         <div class="cta">
           <span class="section-label">
-            <span class="idx num">05</span><span class="bar"></span>Let's work together
+            <span class="idx num">06</span><span class="bar"></span>Let's work together
           </span>
           <h2>
             Open to <em>Data Analyst</em> &amp; <em>Business Analyst</em> opportunities.
@@ -883,23 +1206,47 @@
     </section>
   </main>
 
-  <!-- ===================== FOOTER ===================== -->
+  <!-- ======================================================
+       FOOTER — refined 3-column layout
+       ====================================================== -->
   <footer>
-    <div class="container footer-inner">
-      <span>© <span id="year"></span> Rhahavy Bala · Built with care in Ontario.</span>
-      <div class="footer-links">
-        <a href="https://github.com/rhahavy" target="_blank" rel="noreferrer noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/rhahavy-bala/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
-        <a href="mailto:rhahavy.b@gmail.com">Email</a>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Rhahavy Bala</div>
+          <p class="footer-tag">Data analyst and dashboard developer. Building clarity into the numbers that drive decisions.</p>
+        </div>
+        <div class="footer-col">
+          <p class="label">Sections</p>
+          <ul>
+            <li><a href="#approach">Approach</a></li>
+            <li><a href="#focus">Focus</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#toolkit">Toolkit</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <p class="label">Connect</p>
+          <ul>
+            <li><a href="mailto:rhahavy.b@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/rhahavy-bala/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/rhahavy" target="_blank" rel="noreferrer noopener">GitHub</a></li>
+            <li><a href="/Resume_Rhahavy_Bala.pdf" target="_blank" rel="noreferrer noopener">Resume</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Rhahavy Bala · Built with care in Ontario.</span>
+        <span>Last updated April 2026</span>
       </div>
     </div>
   </footer>
 
   <script>
-    // Footer year
+    /* Footer year */
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Scroll-based nav border
+    /* Sticky-nav bottom border on scroll */
     const nav = document.getElementById('nav');
     const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
     window.addEventListener('scroll', onScroll, { passive: true });
