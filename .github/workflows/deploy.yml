@@ -26,10 +26,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Assemble site
-        # Copy index.html + everything in /public to a deploy folder.
+        # Copy all root-level .html and .css files + everything in /public.
         run: |
           mkdir -p _site
-          cp index.html _site/
+          cp *.html _site/
+          cp *.css _site/ 2>/dev/null || true
           if [ -d public ]; then cp -r public/. _site/; fi
           ls -la _site/
 
