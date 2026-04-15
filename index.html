@@ -560,6 +560,41 @@
       font-size: 0.96rem;
       line-height: 1.7;
     }
+    /* Problem / Approach / Impact mini case-study points */
+    .project-points {
+      margin: -0.3rem 0 0;
+      padding: 0;
+      display: flex; flex-direction: column;
+      gap: 0.7rem;
+    }
+    .project-points > div {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 0.9rem;
+      align-items: baseline;
+    }
+    .project-points dt {
+      margin: 0;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-deep);
+    }
+    .project.tone-yellow .project-points dt { color: var(--yellow-deep); }
+    .project-points dd {
+      margin: 0;
+      color: var(--ink-500);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    .bi-bridge {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--ink-400);
+      line-height: 1.55;
+      padding-top: 0.1rem;
+    }
     .project-tools {
       display: flex; flex-wrap: wrap; gap: 0.4rem;
     }
@@ -809,10 +844,10 @@
           <span class="idx num">00</span><span class="bar"></span>Data Analyst Portfolio
         </span>
         <h1 class="fade-in d1">
-          Data Analyst <span class="pipe">|</span> Turning messy data into <em class="underline">clear business decisions</em>.
+          Business &amp; Data Analyst <span class="pipe">|</span> Building Interactive Dashboards for <em class="underline">Data-Driven Decision Making</em>
         </h1>
         <p class="hero-sub fade-in d2">
-          I build dashboards and analysis that uncover trends, risks, and opportunities in real-world data.
+          I build dashboards and data tools that turn complex information into clear, usable insights. My work helps teams see what matters, ask better questions, and make decisions with confidence.
         </p>
         <p class="hero-credibility fade-in d2">
           <strong>Project Coordinator at LEARNstyle</strong> in education technology, with a background in <strong>Honours Political Science at McMaster University</strong>.
@@ -821,7 +856,7 @@
           <span class="dot-avail" aria-hidden="true"></span>
           Based in Ontario, Canada
           <span class="sep">·</span>
-          Open to remote and hybrid analyst opportunities
+          Open to remote and hybrid Business Analyst &amp; Data Analyst opportunities
         </p>
         <div class="hero-ctas fade-in d4">
           <a class="btn btn-primary" href="#projects">
@@ -974,12 +1009,12 @@
             </div>
             <div class="project-body">
               <h3>GTA Housing Market Analysis</h3>
-              <span class="project-question">
-                Where are affordability challenges increasing across the GTA?
-              </span>
-              <p class="project-desc">
-                Analyzed long-term housing trends across the GTA to uncover pricing patterns, supply constraints, and affordability pressures.
-              </p>
+              <dl class="project-points">
+                <div><dt>Problem</dt><dd>How have prices, supply, and affordability shifted across the GTA over time?</dd></div>
+                <div><dt>Approach</dt><dd>Interactive dashboard with regional filters, KPI tracking, and 26-year trend analysis.</dd></div>
+                <div><dt>Impact</dt><dd>Users can compare municipalities, track affordability pressure, and see how carrying costs moved after the 2022 rate hikes.</dd></div>
+              </dl>
+              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip">Tableau</span>
                 <span class="chip">SQL</span>
@@ -1006,12 +1041,12 @@
             </div>
             <div class="project-body">
               <h3>Telecom Customer Churn Dashboard</h3>
-              <span class="project-question">
-                Which customers are most at risk of leaving?
-              </span>
-              <p class="project-desc">
-                Explored customer churn behavior to identify key drivers of retention risk and opportunities for intervention.
-              </p>
+              <dl class="project-points">
+                <div><dt>Problem</dt><dd>Which customer segments are most at risk of leaving, and where should retention spend go?</dd></div>
+                <div><dt>Approach</dt><dd>Interactive dashboard segmenting a ~7,000-subscriber base by tenure, contract type, payment method, and service mix.</dd></div>
+                <div><dt>Impact</dt><dd>Highlights the cohorts driving churn and supports stakeholder-friendly decisions on where retention efforts produce the highest return.</dd></div>
+              </dl>
+              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip warm">Power BI</span>
                 <span class="chip warm">SQL</span>
@@ -1038,12 +1073,12 @@
             </div>
             <div class="project-body">
               <h3>Ontario EQAO Dashboard</h3>
-              <span class="project-question">
-                How do education outcomes vary across different communities?
-              </span>
-              <p class="project-desc">
-                Visualized student performance data to uncover trends across regions, income levels, and school systems.
-              </p>
+              <dl class="project-points">
+                <div><dt>Problem</dt><dd>How has student performance across Ontario shifted since the pandemic, and which boards are still recovering?</dd></div>
+                <div><dt>Approach</dt><dd>Board-level dashboard benchmarking EQAO outcomes against provincial averages, with grade, subject, and region filters.</dd></div>
+                <div><dt>Impact</dt><dd>Makes the gap between top-performing and lagging boards visible in one view — useful for program, policy, and funding decisions.</dd></div>
+              </dl>
+              <p class="bi-bridge">Designed using principles commonly applied in Tableau and Power BI dashboards.</p>
               <div class="project-tools">
                 <span class="chip">Power BI</span>
                 <span class="chip">Excel</span>
@@ -1071,26 +1106,22 @@
       <div class="container">
         <div class="section-header">
           <span class="section-label">
-            <span class="idx num">05</span><span class="bar"></span>Toolkit
+            <span class="idx num">05</span><span class="bar"></span>Tools &amp; Technologies
           </span>
           <h2 class="section-title">The kit behind the work.</h2>
           <p class="section-intro">Tools I use to clean, analyze, and communicate data.</p>
         </div>
 
         <div class="toolkit-row">
-          <span class="tool">Excel</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="tool">SQL</span>
-          <span class="sep" aria-hidden="true">·</span>
           <span class="tool">Tableau</span>
-          <span class="sep" aria-hidden="true">·</span>
+          <span class="sep" aria-hidden="true">•</span>
           <span class="tool">Power BI</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="tool">Data Cleaning</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="tool">Dashboard Design</span>
-          <span class="sep" aria-hidden="true">·</span>
-          <span class="tool">Data Storytelling</span>
+          <span class="sep" aria-hidden="true">•</span>
+          <span class="tool">Excel</span>
+          <span class="sep" aria-hidden="true">•</span>
+          <span class="tool">SQL</span>
+          <span class="sep" aria-hidden="true">•</span>
+          <span class="tool">JavaScript (Plotly)</span>
         </div>
       </div>
     </section>
