@@ -189,10 +189,10 @@
     }
 
     /* ============================================================
-       HERO
+       HERO — senior, editorial. Headline dominates; everything else supports.
        ============================================================ */
     .hero {
-      padding: clamp(4.5rem, 11vw, 8rem) 0 clamp(3.5rem, 7vw, 5rem);
+      padding: clamp(5.5rem, 13vw, 10rem) 0 clamp(4rem, 9vw, 7rem);
       position: relative; overflow: hidden;
     }
     .hero::before {
@@ -209,19 +209,19 @@
       width: 45%; height: 70%;
       background: radial-gradient(circle, rgba(237,199,74,.09) 0%, transparent 60%);
     }
-    /* Centered hero block — balances the page on wide screens
-       instead of leaving the right side empty. */
     .hero-inner {
-      max-width: 880px;
+      max-width: 940px;
       margin: 0 auto;
       position: relative;
     }
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      margin-top: 1.4rem;
-      line-height: 1.15;
-      max-width: 20ch;
-      text-wrap: balance; /* modern browsers balance line lengths nicely */
+      font-size: clamp(2.4rem, 6vw, 4.4rem);
+      margin-top: 2rem;
+      line-height: 1.05;
+      max-width: 17ch;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+      font-weight: 600;
     }
     .hero h1 em {
       font-style: italic;
@@ -249,22 +249,22 @@
       font-style: normal;
     }
     .hero-sub {
-      margin-top: 1.75rem;
-      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      margin-top: 2.25rem;
+      font-size: clamp(1.1rem, 1.5vw, 1.28rem);
       color: var(--ink-500);
-      max-width: 640px;
+      max-width: 60ch;
       line-height: 1.65;
     }
     /* Credibility line — italic blockquote style */
     .hero-credibility {
-      margin-top: 1.35rem;
-      padding-left: 1rem;
+      margin-top: 2rem;
+      padding-left: 1.1rem;
       border-left: 2px solid var(--accent);
       max-width: 620px;
       font-size: 0.96rem;
       color: var(--ink-700);
       font-style: italic;
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .hero-credibility strong {
       font-weight: 600; font-style: normal;
@@ -272,10 +272,10 @@
     }
     /* Location / availability — single clean line */
     .hero-meta {
-      margin-top: 1.75rem;
+      margin-top: 2.5rem;
       display: flex; align-items: center; flex-wrap: wrap;
       gap: 0.75rem;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--ink-500);
       line-height: 1.4;
     }
@@ -291,8 +291,8 @@
     }
     /* Hero CTAs */
     .hero-ctas {
-      margin-top: 2.25rem;
-      display: flex; gap: 0.8rem; flex-wrap: wrap;
+      margin-top: 2.75rem;
+      display: flex; gap: 0.9rem; flex-wrap: wrap;
       align-items: center;
     }
     .btn {
@@ -915,10 +915,6 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <a class="btn btn-secondary" href="mailto:rhahavy.b@gmail.com">Let's talk</a>
-          <a class="btn-link" href="/Resume_Rhahavy_Bala.pdf" target="_blank" rel="noreferrer noopener">
-            Download resume
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          </a>
         </div>
       </div>
     </section>
