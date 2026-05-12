@@ -209,12 +209,19 @@
       width: 45%; height: 70%;
       background: radial-gradient(circle, rgba(237,199,74,.09) 0%, transparent 60%);
     }
-    .hero-inner { max-width: 880px; position: relative; }
+    /* Centered hero block — balances the page on wide screens
+       instead of leaving the right side empty. */
+    .hero-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative;
+    }
     .hero h1 {
       font-size: clamp(2rem, 4vw, 3.25rem);
       margin-top: 1.4rem;
       line-height: 1.15;
-      max-width: 18ch;
+      max-width: 20ch;
+      text-wrap: balance; /* modern browsers balance line lengths nicely */
     }
     .hero h1 em {
       font-style: italic;
@@ -888,7 +895,7 @@
           <span class="idx num">00</span><span class="bar"></span>Data Analyst Portfolio
         </span>
         <h1 class="fade-in d1">
-          Business &amp; Data Analyst <span class="pipe">|</span> Building Interactive Dashboards for <em class="underline">Real-World Decision Making</em>
+          Business &amp; Data Analyst <span class="pipe">|</span> Building Interactive Dashboards for <em class="underline">Real‑World Decision Making</em>
         </h1>
         <p class="hero-sub fade-in d2">
           I build dashboards that turn messy, real-world data into clear insights people can actually use. Most of the work is about making information easier to act on — not just easier to look at.
